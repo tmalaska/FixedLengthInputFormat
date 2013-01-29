@@ -29,7 +29,7 @@ public class FixedLengthRecordReader  extends RecordReader<LongWritable, Text> {
 	
 	FixedLengthRecordReader ( int recordByteLength) throws IOException {
 		this.recordByteLength = recordByteLength;
-		System.out.println("FixedLengthRecordReader:" + recordByteLength);
+		
 	}
 	
 	@Override
@@ -52,7 +52,6 @@ public class FixedLengthRecordReader  extends RecordReader<LongWritable, Text> {
 	        fileIn.skip(pos);
 	    }
 	    
-	    System.out.println("FixedLengthRecordReader:" + start + " " + pos + " " + end);
 		
 	}
 
@@ -60,7 +59,6 @@ public class FixedLengthRecordReader  extends RecordReader<LongWritable, Text> {
 	public boolean nextKeyValue() throws IOException, InterruptedException {
 		
 		if (pos >= end) {
-			System.out.println("FixedLengthRecordReader Finished end Of Split:" + start + " " + pos + " " + end);
 			return false;
 		}
 		
@@ -76,7 +74,6 @@ public class FixedLengthRecordReader  extends RecordReader<LongWritable, Text> {
 		pos += result;
 		
 		if (result < recordByteLength) {
-			System.out.println("FixedLengthRecordReader Finished result is less then length:" + start + " " + pos + " " + end + " (" + result + ")");
 			return false;
 		}
 		
