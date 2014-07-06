@@ -58,7 +58,7 @@ public class FixedLengthRecordReader  extends RecordReader<LongWritable, Text> {
 	@Override
 	public boolean nextKeyValue() throws IOException, InterruptedException {
 		
-		if (pos >= end) {
+		if (pos > end) {
 			return false;
 		}
 		
